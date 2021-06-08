@@ -13,6 +13,10 @@
   "files.watcherExclude": {
     "**/node_modules": true
   },
+  "files.autoSave": "afterDelay", //自动保存文件，防止忘记保存文件
+  "files.autoSaveDelay": 10000, //延迟保存文件10s
+  "scm.alwaysShowRepositories": true,
+  "noteSync.enableNoteSync": true,
   "foam.edit.linkReferenceDefinitions": "off",
   "foam.openDailyNote.directory": "journal",
   "foam.openDailyNote.titleFormat": "fullDate",
