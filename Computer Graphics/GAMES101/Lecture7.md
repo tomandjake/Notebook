@@ -1,1 +1,5 @@
 # Lecture 7:Shading 1 (Illumination, Shading and Graphics Pipeline)  
+![](../../attachments/2021-06-14-16-59-32.png)
+![](../../attachments/2021-06-14-17-03-40.png) 
+![](../../attachments/2021-06-14-17-04-33.png)
+![](../../attachments/2021-06-14-17-04-57.png)
