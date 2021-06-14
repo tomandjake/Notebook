@@ -1,2 +1,7 @@
 # Lecture5: Rasterization 1 (Triangles) 
-![](../../attachments/2021-06-10-15-35-08.png)
+![](../../attachments/2021-06-10-15-35-08.png)  
+![](../../attachments/2021-06-11-08-11-00.png)  
+![](../../attachments/2021-06-11-08-13-32.png)  
+![](../../attachments/2021-06-11-08-13-44.png)
+![](../../attachments/2021-06-11-08-15-04.png)
+![](../../attachments/2021-06-11-08-15-23.png)
