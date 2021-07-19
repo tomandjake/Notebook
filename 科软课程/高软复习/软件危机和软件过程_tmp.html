@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>软件危机和软件过程.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E8%BD%AF%E4%BB%B6%E5%8D%B1%E6%9C%BA%E5%92%8C%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B">软件危机和软件过程</h1>
+<h2 id="%E8%BD%AF%E4%BB%B6%E5%8D%B1%E6%9C%BA%E4%BA%A7%E7%94%9F%E8%83%8C%E6%99%AF">软件危机产生背景</h2>
+<p>Brooks的预测是千真万确的，软件危机的困境依然没有从根本上找到解决方法。<br>
+基于规则的编程模型，找不到解决软件危机的杀手锏（银弹）。<br>
+基于联结的编程模型，或许能在软件危机的困境中取得突破。</p>
+<h2 id="%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B">软件过程模型</h2>
+<p>描述性和说明性软件过程<br>
+<strong>瀑布模型</strong><br>
+原型化瀑布模型 ~ 有利于确认需求是否被准确理解 和 验证技术方案的可行性<br>
+<strong>V模型</strong><br>
+将瀑布模型前后两端的过程活动结合起来，可以提高过程活动的内聚度。<br>
+生死相依原则<br>
+开始一项工作前，先思考验证该工作的方法。</p>
+<p><strong>分阶段开发</strong><br>
+增量开发 ~ 从一个功能子系统开始，每次增加功能。<br>
+迭代开发 ~ 完成一个完整的系统，每次交付会升级其中的某个子系统</p>
+<p><strong>螺旋模型</strong><br>
+引入了风险管理。在每个阶段构建原型是螺旋模型减小风险的基本策略。<br>
+每次迭代四个主要阶段</p>
+<ol>
+<li>plan</li>
+<li>determine goals, alternatives and constraints</li>
+<li>evaluate alternatives and risks</li>
+<li>develop and test</li>
+</ol>
+<p><strong>个人软件过程PSP</strong><br>
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-15-50-06.png" alt=""><br>
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-15-50-20.png" alt=""><br>
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-15-50-59.png" alt=""><br>
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-15-52-42.png" alt=""><br>
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-15-52-59.png" alt=""></p>
+<p><strong>团队软件过程TSP</strong></p>
+<p><strong>项目失败最根本的原因是团队问题</strong><br>
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-16-02-01.png" alt=""><br>
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-16-02-13.png" alt=""><br>
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-16-02-26.png" alt=""></p>
+<p><strong>CMMI过程域</strong>
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-16-28-48.png" alt="">
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-16-29-21.png" alt=""></p>
+<h2 id="%E6%95%8F%E6%8D%B7%E6%96%B9%E6%B3%95">敏捷方法</h2>
+<p>个体和互动 高于 流程和工具<br>
+工作的软件 高于 详尽的文档<br>
+客户合作 高于 合同谈判<br>
+响应变化 高于 遵循计划</p>
+<p>我们最重要的目标，是通过持续不断地及早交付有价值的软件使客户满意。<br>
+欣然面对需求变化，即使在开发后期也一样。为了客户的竞争优势，敏捷过程掌控变化。<br>
+经常地交付可工作的软件，相隔几星期或一两个月，倾向于采取较短的周期<br>
+业务人员和开发人员必须相互合作，项目中的每一天都不例外<br>
+激发个体的斗志，以他们为核心搭建项目。提供所需的环境和支援，辅以信任，从而达成目标。<br>
+不论团队内外，传递信息效果最好效率也最高的方式是面对面的交谈。<br>
+可工作的软件是进度的首要度量标准。<br>
+敏捷过程倡导可持续开发。责任人、开发人员和用户要能够共同维持其步调稳定延续<br>
+坚持不懈地追求技术卓越和良好设计，敏捷能力由此增强<br>
+以简洁为本，它是极力减少不必要工作量的艺术<br>
+最好的架构、需求和设计出自自组织团队<br>
+团队定期地反思如何能提高成效，并依此调整自身的举止表现</p>
+<h2 id="scrum%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95">Scrum敏捷开发方法</h2>
+<ol>
+<li>项目经理</li>
+<li>产品经理</li>
+<li>团队</li>
+</ol>
+<p>每一轮迭代是一个冲刺，包含有</p>
+<ol>
+<li>冲刺规划会议</li>
+<li>每日站立会议</li>
+<li>冲刺评审会议</li>
+<li>冲刺回顾会议<br>
+<img src="file:///d:/学习笔记/Notebook/attachments/2021-07-17-16-39-14.png" alt=""></li>
+</ol>
+<p>工作和跟踪进展</p>
+<ol>
+<li>产品积压订单</li>
+<li>冲刺积压订单</li>
+<li>燃尽图</li>
+<li>障碍积压订单</li>
+</ol>
+<p><strong>冲刺计划会议要点</strong><br>
+会议要有足够时间，最好至少8小时。<br>
+取出部分产品积压订单做成Sprint积压订单，写成索引卡。<br>
+确定并细分每一个索引卡的故事。<br>
+确定每日站会的时间和地点。<br>
+确定好演示会议和回顾会议的日期。</p>
+<p><strong>每日站立会议要点</strong><br>
+10-15min<br>
+昨天做了什么 今天要做什么 遇到了什么问题<br>
+使用好任务看板 更新燃尽图</p>
+<p><strong>冲刺评审会议要点</strong><br>
+让老板和客户看到演示效果<br>
+不要关注太多细节，以主要的功能为主</p>
+<p><strong>冲刺回顾会议讨论的问题举例</strong></p>
+<ol>
+<li>应该花更多的事件，把故事拆分成更小的条目和任务</li>
+<li>办公室环境太吵了</li>
+<li>做出过了过度的承诺，最后只完成了一半工作</li>
+</ol>
+<p><strong>Scrum基本流程</strong><br>
+step1: 找出完成产品需要做的事情。 每一项时间估计单位为“天”<br>
+step2：决定当前的冲刺。  每一项单位为“小时”<br>
+step3: 冲刺。<br>
+step4: 得到一个软件的增量版本，冲刺评审会议，发布给用户。</p>
+<p><strong>Scrum主要缺陷</strong></p>
+<ol>
+<li>压力大</li>
+<li>程序维护成本高</li>
+<li>无法被中断<br>
+改善：<br>
+结合XP<br>
+测试驱动开发TDD<br>
+40小时工作制<br>
+使用编码规范</li>
+</ol>
+<h2 id="devops">DevOps</h2>
+<p>DevOps是一组过程、方法与系统的统称。
+可以看作开发、技术运营和质量保障三者的交集。<br>
+“一套旨在缩短从提交变更 到 变更后的系统投入正常生产之间时间，同时确保产品高质量的实践方法”<br>
+可以看作是敏捷方法从技术开发领域扩展到业务运维领域。<br>
+<strong>精益生产</strong><br>
+<strong>精益创业</strong><br>
+<strong>最小可行产品MVP</strong></p>
+
+</body>
+</html>
